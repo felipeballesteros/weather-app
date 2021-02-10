@@ -5,9 +5,9 @@ import Main from "./components/Main/index.js";
 
 const app = document.getElementById("app");
 const el = (
-  <div>
+  <React.Fragment>
     <Main />
-  </div>
+  </React.Fragment>
 );
 
 render(el, app);
