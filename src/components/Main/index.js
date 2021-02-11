@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import MainWrapper from "./styles";
+import {MainWrapper, WidgetContainer} from "./styles";
 
 import Temperature from "../Temperature";
+import Weather from "../Weather";
 import Location from "../Location";
+import Coordinates from "../Coordinates";
+import Visibility from "../Visibility";
 
 const url =
   "https://api.openweathermap.org/data/2.5/weather?q=Toronto&units=imperial&appid=f2d256778f4c877271b311c22dd7e42f";
@@ -26,7 +29,7 @@ const Main = () => {
 
   const {weatherInfo, loading} = data;
 
-  const {main, weather, sys} = weatherInfo;
+  const {main, weather, sys, coord, visibility} = weatherInfo;
 
   if (loading) {
     return <div> LoAdInG ...</div>;
@@ -34,8 +37,13 @@ const Main = () => {
 
   return (
     <MainWrapper>
-      <Temperature data={main} />
-      <Location data={sys} />
+      <WidgetContainer>
+        <Temperature data={main} />
+        <Weather data={weather} />
+        <Location data={sys} />
+        <Coordinates data={coord} />
+        <Visibility data={visibility} />
+      </WidgetContainer>
     </MainWrapper>
   );
 };

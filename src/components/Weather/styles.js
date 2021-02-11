@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const LocationWrapper = styled.div`
+const WeatherWrapper = styled.div`
   font-family: Tahoma, sans-serif;
-  background-color: #c06c84;
+  background-color: #f67280;
   padding: 10px;
 
   p {
@@ -10,6 +10,11 @@ const LocationWrapper = styled.div`
     font-size: 0.8rem;
     margin: 0.3rem 0;
   }
+
+  .weatherImage {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
-export default LocationWrapper;
+export default WeatherWrapper;

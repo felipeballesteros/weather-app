@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const LocationWrapper = styled.div`
+const CoordinatesWrapper = styled.div`
   font-family: Tahoma, sans-serif;
-  background-color: #c06c84;
+  background-color: #6c5b7b;
   padding: 10px;
 
   p {
@@ -12,4 +12,4 @@ const LocationWrapper = styled.div`
   }
 `;
 
-export default LocationWrapper;
+export default CoordinatesWrapper;
