@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {MainWrapper, WidgetContainer} from "./styles";
 
+import Search from "../Search";
 import Temperature from "../Temperature";
 import Weather from "../Weather";
 import Location from "../Location";
@@ -37,6 +38,8 @@ const Main = () => {
 
   return (
     <MainWrapper>
+      <Search />
+
       <WidgetContainer>
         <Temperature data={main} />
         <Weather data={weather} />

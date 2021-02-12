@@ -4,9 +4,13 @@ const MainWrapper = styled.div`
   margin: 0;
   padding: 0;
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
+  flex-direction: column;
   height: 100%;
   background-color: #f8b195;
   background-image: linear-gradient(
@@ -22,7 +26,7 @@ const MainWrapper = styled.div`
 const WidgetContainer = styled.div`
   width: 400px;
   max-height: 900px;
-  margin: 2rem auto;
+
   border-radius: 5px;
   overflow: hidden;
   -webkit-box-shadow: 0px 1px 30px 15px rgba(0, 0, 0, 0.3);
