@@ -2,7 +2,7 @@ import React from "react";
 import TemperatureWrapper from "./styles";
 
 const Temperature = props => {
-  if (props.data) {
+  if (props.data && props.name) {
     const {
       temp,
       temp_max,
@@ -11,8 +11,10 @@ const Temperature = props => {
       humidity,
       pressure,
     } = props.data;
+
     return (
       <TemperatureWrapper>
+        <p>Name: {props.name}</p>
         <p>Temperature: {temp}</p>
         <p>Temperature Max: {temp_max}</p>
         <p>Temperature Min: {temp_min}</p>

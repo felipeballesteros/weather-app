@@ -14,7 +14,6 @@ const MainWrapper = styled.div`
   height: 100%;
   background-color: #f8b195;
   background-image: linear-gradient(
-    180deg,
     #f8b195 0%,
     #f67280 24%,
     #c06c84 49%,
@@ -25,12 +24,63 @@ const MainWrapper = styled.div`
 
 const WidgetContainer = styled.div`
   width: 400px;
+  min-width: 200px;
   max-height: 900px;
-
   border-radius: 5px;
   overflow: hidden;
   -webkit-box-shadow: 0px 1px 30px 15px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 1px 30px 15px rgba(0, 0, 0, 0.3);
+
+  opacity: 1;
+  animation: fade 0.5s linear;
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
-export {MainWrapper, WidgetContainer};
+const Loader = styled.div`
+  width: 200px;
+  height: 200px;
+  background-color: skyblue;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: inset 0 0 30px 0 rgba(0, 0, 0, 0.5),
+    0 4px 10px 0 rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+
+  :before,
+  :after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: -100px;
+    background-color: #fff;
+  }
+  :before {
+    border-radius: 45%;
+    background: rgba(255, 255, 255, 0.7);
+    animation: wave 5s linear infinite;
+  }
+  :after {
+    border-radius: 35%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: wave 5s linear infinite;
+  }
+  @keyframes wave {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+export {MainWrapper, WidgetContainer, Loader};

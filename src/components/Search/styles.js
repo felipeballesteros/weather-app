@@ -9,13 +9,29 @@ const SearchWrapper = styled.div`
   -webkit-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.3);
 
-  input {
+  opacity: 1;
+  animation: fade 0.5s linear;
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  form {
+    display: flex;
+  }
+
+  input[type="text"] {
     padding: 10px;
     margin: 0;
     border: none;
   }
 
-  button {
+  input[type="submit"] {
     height: 40px;
     padding: 0 10px;
     margin: 0;

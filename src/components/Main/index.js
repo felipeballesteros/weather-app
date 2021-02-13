@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import {MainWrapper, WidgetContainer} from "./styles";
+import {MainWrapper, WidgetContainer, Loader} from "./styles";
 
 import Search from "../Search";
 import Temperature from "../Temperature";
@@ -9,13 +9,14 @@ import Location from "../Location";
 import Coordinates from "../Coordinates";
 import Visibility from "../Visibility";
 
-const url =
-  "https://api.openweathermap.org/data/2.5/weather?q=Toronto&units=imperial&appid=f2d256778f4c877271b311c22dd7e42f";
-
 const Main = () => {
   const [data, setData] = useState({weatherInfo: {}, loading: true});
+  const defaultLocation = "Toronto";
+  const defaultUnits = "imperial";
 
-  const getUrl = url => {
+  const getUrl = (location, units) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&appid=f2d256778f4c877271b311c22dd7e42f`;
+
     axios
       .get(url)
       .then(res => {
@@ -26,22 +27,31 @@ const Main = () => {
       });
   };
 
-  useEffect(() => getUrl(url), []);
+  useEffect(() => getUrl(defaultLocation, defaultUnits), []);
+
+  const handleLocationChange = textInput => {
+    if (textInput !== "") {
+      getUrl(textInput, defaultUnits);
+    }
+  };
 
   const {weatherInfo, loading} = data;
-
-  const {main, weather, sys, coord, visibility} = weatherInfo;
+  const {main, weather, sys, coord, visibility, name} = weatherInfo;
 
   if (loading) {
-    return <div> LoAdInG ...</div>;
+    return (
+      <MainWrapper>
+        <Loader />
+      </MainWrapper>
+    );
   }
 
   return (
     <MainWrapper>
-      <Search />
+      <Search locationChange={handleLocationChange} />
 
       <WidgetContainer>
-        <Temperature data={main} />
+        <Temperature data={main} name={name} />
         <Weather data={weather} />
         <Location data={sys} />
         <Coordinates data={coord} />

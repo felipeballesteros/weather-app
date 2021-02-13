@@ -1,10 +1,18 @@
 import React from "react";
 import LocationWrapper from "./styles";
+import isoCountries from "../../countryCodes";
 
 const Location = props => {
   if (props.data) {
     const {country, sunrise, sunset} = props.data;
 
+    const getCountryName = countryCode => {
+      if (isoCountries.hasOwnProperty(countryCode)) {
+        return isoCountries[countryCode];
+      } else {
+        return countryCode;
+      }
+    };
     const convertToReadableDate = epoch => {
       const newDate = new Date();
       newDate.setUTCSeconds(epoch);
@@ -23,7 +31,7 @@ const Location = props => {
     };
     return (
       <LocationWrapper>
-        <p>Country: {country}</p>
+        <p>Country: {getCountryName(country)}</p>
         <p>Sunrise: {convertToReadableDate(sunrise)}</p>
         <p>Sunset: {convertToReadableDate(sunset)}</p>
       </LocationWrapper>
